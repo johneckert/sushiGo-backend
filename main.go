@@ -4,11 +4,13 @@ package main
 import (
 	// "encoding/json"
 	"encoding/json"
-	"log"      //error logging
+	"log" //error logging
+	"math/rand"
 	"net/http" //random number gen
-	// "strconv"
-	// math/rand
+	"strconv"  //string conversion
+
 	"github.com/gorilla/mux" //router
+	"github.com/rs/cors"
 )
 
 //Roll is model for sushi
@@ -43,10 +45,15 @@ func getRoll(w http.ResponseWriter, r *http.Request) {
 
 //Create a New Roll
 func createRoll(w http.ResponseWriter, r *http.Request) {
-	// w.Header().Set("Content-Type", "application/json")
-	// var roll Roll
-	// _ =
-
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", r.Header.Get("localhost:3000"))
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	var roll Roll
+	_ = json.NewDecoder(r.Body).Decode(&roll)
+	roll.ID = strconv.Itoa(len(rolls) + 1) //fake an Id for new roll
+	roll.ImageNumber = strconv.Itoa(rand.Intn(10) + 1)
+	rolls = append(rolls, roll)
+	json.NewEncoder(w).Encode(roll)
 }
 
 //Update
@@ -91,9 +98,11 @@ func main() {
 	//endpoints
 	router.HandleFunc("/sushi", getRolls).Methods("GET")
 	router.HandleFunc("/sushi/{id}", getRoll).Methods("GET")
-	router.HandleFunc("/sushi/", createRoll).Methods("POST")
-	router.HandleFunc("/sushi/{id}", updateRoll).Methods("POST")
+	router.HandleFunc("/sushi", createRoll).Methods("POST")
+	// router.HandleFunc("/sushi/{id}", updateRoll).Methods("POST")
 	router.HandleFunc("/sushi/{id}", deleteRoll).Methods("DELETE")
 
-	log.Fatal(http.ListenAndServe(":8000", router))
+	handler := cors.Default().Handler(router)
+
+	log.Fatal(http.ListenAndServe(":8000", handler))
 }
