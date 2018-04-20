@@ -102,5 +102,5 @@ func main() {
 
 	handler := cors.Default().Handler(router)
 
-	log.Fatal(http.ListenAndServe("https://sushigo-backend.herokuapp.com/sushi", handler))
+	log.Fatal(http.ListenAndServe("sushigo-backend.herokuapp.com/sushi", handler))
 }
