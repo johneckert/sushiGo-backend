@@ -93,8 +93,6 @@ func main() {
 
 	rolls = append(rolls, Roll{ID: "11", ImageNumber: "11", Name: "Yellow Tail Sushi", Ingredients: "Yellow Tail, Wasabi, Sushi Rice"})
 
-	rolls = append(rolls, Roll{ID: "12", ImageNumber: "1", Name: "Salmon Sushi", Ingredients: "Salmon, Wasabi, Sushi Rice"})
-
 	//endpoints
 	router.HandleFunc("/sushi", getRolls).Methods("GET")
 	router.HandleFunc("/sushi/{id}", getRoll).Methods("GET")
