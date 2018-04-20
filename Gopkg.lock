@@ -8,20 +8,20 @@
   version = "v1.1"
 
 [[projects]]
-  branch = "master"
   name = "github.com/gorilla/mux"
   packages = ["."]
-  revision = "b57cb1605fd11ba2ecfa7f68992b4b9cc791934d"
+  revision = "53c1911da2b537f792e7cafcb446b05ffe33b996"
+  version = "v1.6.1"
 
 [[projects]]
-  branch = "master"
   name = "github.com/rs/cors"
   packages = ["."]
-  revision = "12972ae4e7775151d0d53aaad277be85133ce445"
+  revision = "feef513b9575b32f84bafa580aad89b011259019"
+  version = "v1.3.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "8b57138f7ad06f17c2fff525759fa984736abc5a89ea8679e1a8e0a066627137"
+  inputs-digest = "0d88207a71b223b8f26413a1811e8974ba08aaf7649ed4e747ba50f73d3398f3"
   solver-name = "gps-cdcl"
   solver-version = 1
