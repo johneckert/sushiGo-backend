@@ -94,11 +94,11 @@ func main() {
 	rolls = append(rolls, Roll{ID: "11", ImageNumber: "11", Name: "Yellow Tail Sushi", Ingredients: "Yellow Tail, Wasabi, Sushi Rice"})
 
 	//endpoints
-	router.HandleFunc("/sushi", getRolls).Methods("GET")
-	router.HandleFunc("/sushi/{id}", getRoll).Methods("GET")
-	router.HandleFunc("/sushi", createRoll).Methods("POST")
+	router.HandleFunc("/", getRolls).Methods("GET")
+	router.HandleFunc("/{id}", getRoll).Methods("GET")
+	router.HandleFunc("/", createRoll).Methods("POST")
 	// router.HandleFunc("/sushi/{id}", updateRoll).Methods("POST")
-	router.HandleFunc("/sushi/{id}", deleteRoll).Methods("DELETE")
+	router.HandleFunc("/{id}", deleteRoll).Methods("DELETE")
 
 	handler := cors.Default().Handler(router)
 
