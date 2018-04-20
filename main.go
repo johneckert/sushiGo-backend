@@ -7,7 +7,8 @@ import (
 	"log" //error logging
 	"math/rand"
 	"net/http" //random number gen
-	"strconv"  //string conversion
+	"os"
+	"strconv" //string conversion
 
 	"github.com/gorilla/mux" //router
 	"github.com/rs/cors"
@@ -102,5 +103,5 @@ func main() {
 
 	handler := cors.Default().Handler(router)
 
-	log.Fatal(http.ListenAndServe(":8000", handler))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), handler))
 }
