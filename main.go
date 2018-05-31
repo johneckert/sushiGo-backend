@@ -25,7 +25,7 @@ type Roll struct {
 //Init rolls var as a slice
 var rolls []Roll
 
-//Get All Books
+//Get All Rolls
 func getRolls(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(rolls)
@@ -59,12 +59,12 @@ func createRoll(w http.ResponseWriter, r *http.Request) {
 
 //Update
 func updateRoll(w http.ResponseWriter, r *http.Request) {
-
+	//implement later
 }
 
 //Delete Roll
 func deleteRoll(w http.ResponseWriter, r *http.Request) {
-
+	//implement later
 }
 
 func main() {
